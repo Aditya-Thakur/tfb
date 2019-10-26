@@ -1,0 +1,70 @@
+<br>
+<div *ngIf="myCart.getTotalItemCount() != 0; else noItemFound" class="container">
+  <div class="row">
+    <h3>Step 1 of 3</h3>
+  </div>
+  <div class="row">
+    <h4>You have following items in your cart: </h4>
+  </div>
+  <div class="row cart-table">
+    <table *ngIf="myCart!=null" class="table table-striped table-dark">
+      <thead>
+        <tr>
+          <th scope="col">
+            <i class="fa fa-shopping-cart cart-icon"></i><span *ngIf="myCart!=null"
+              class="badge">{{myCart.getTotalItemCount()}}</span>
+          </th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cartItem of myCart.myCartItems">
+          <td>
+            <img class="cart-image"
+              src="http://theflyingbasket.com/assets/productimages/{{cartItem.productId}}/{{cartItem.productImage1}}"
+              alt="{{cartItem.productName}}" (click)="showDetails(cartItem.productId)" />
+          </td>
+          <td>{{cartItem.productName}}</td>
+
+          <td>Rs. {{cartItem.productPrice}}</td>
+          <td>
+            {{cartItem.quantity}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row text-center justify-content-center">
+    <div class="col-md-6" style="float: right; padding-top: 10px;">
+      <h5 class="cart-value">Total Cart Value : Rs. {{myCart.getTotalCartPrice()}}</h5>
+    </div>
+    <div class="col-md-2" style="padding-top: 10px;">
+        <button class="btn btn-small btn-dark" (click)="clearCart()">Clear Cart</button>
+    </div>
+    <div class="col-md-4" style="padding-top: 10px;">
+      <button (click)="triggerShippingForm()" class="btn btn-info">See delivery options</button>
+    </div>
+  </div>
+</div>
+<ng-template #noItemFound>
+  <div class="container card-body">
+    <div class="row">
+      <h5>There are no item in your cart right now: </h5>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <h4>Let's buy something now ----></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-block btn-outline-warning" [routerLink]='["/"]' routerLinkActive="active">Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+
+</ng-template>
+<div class="show" *ngIf="showShippingForm">
+  <app-shipping-form [myCart]="myCart"></app-shipping-form>
+</div>

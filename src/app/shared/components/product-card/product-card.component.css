@@ -1,0 +1,72 @@
+.products {
+  animation: 0.5s ease-out 0s 1 slideUpFromDown;
+}
+
+@keyframes slideUpFromDown {
+  0% {
+    transform: translateY(-30%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.productName {
+  font-weight: bold;
+  cursor: pointer;
+  font-family: monospace;
+  width: 25ch;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.productPriceBeforeDiscount {
+  text-decoration: line-through;
+  color: rgb(175, 175, 175);
+  margin: 1px;
+}
+
+.productPrice {
+  font-weight: bold;
+  color: green;
+}
+
+.carousel {
+  background-color: whitesmoke;
+}
+
+.productImage {
+  cursor: pointer;
+  object-fit: contain;
+  padding: 20px;
+  max-width: 100%;
+  height: 200px;
+}
+
+.mybtn-block {
+  padding-top: 10px;
+}
+
+.bad-response {
+  height: 400px;
+  width: auto;
+}
+
+.my-row {
+  width: 100% !important;
+  margin-top: 0;
+  padding-top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.wishIcon{
+  color: red;
+}
+
+.wishIcon :hover, .addedToList{
+  color: green;
+}

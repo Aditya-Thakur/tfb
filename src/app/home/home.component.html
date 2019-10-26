@@ -1,0 +1,80 @@
+<!-- <div class="align-self-start justify-content-end">
+  <div class="categories">
+    <div *ngIf="showCategories">
+      <h5 class="category-title">Categories <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </h5>
+      <ul class="navbar-nav different-categories">
+        <li class="category nav-item" *ngFor="let category of categories">
+          <span [ngClass]="{'active':category.isActive}" class="categoryName"
+            (click)="getAllSubcategories(category.id)">{{category.categoryName}} <i class="fa fa-caret-down"
+              aria-hidden="true"></i>
+          </span>
+          <div *ngIf="showSubcategories">
+            <ul class="navbar-nav">
+              <li class="nav-item subcategory" *ngFor="let subcategory of subcategories">
+                <span *ngIf="subcategory.categoryid == category.id" [ngClass]="{'active':subcategory.isActive}"
+                  class="subcategoryName" (click)="getAllProducts(subcategory)">{{subcategory.subCategory}}</span>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+<div class="align-self-start justify-content-end">
+  <div class="categories">
+    <div *ngIf="showCategories">
+        <h5 class="category-title">Categories <i class="fa fa-caret-down" aria-hidden="true"></i>
+        </h5>
+      <div class="category" *ngFor="let category of categoryDict | keyvalue">
+        <ul class="navbar-nav different-categories">
+          <li class="nav-item">
+            <span style = "margin: 5%;" (click)="categoryClicked(category.key)">
+              <i class="{{category.key.categoryIcon}}"></i>
+              <i class="fa fa-carrot"></i>
+              {{category.key.categoryName}}<span style="float: right;"> <i class="fa fa-angle-down"></i></span>
+            </span>
+            <ul  *ngIf="showSubcategories" class="navbar-nav">
+                <li *ngFor="let subcategory of currentSubcategory" class="nav-item subcategory">
+                  <span *ngIf="subcategory.categoryid == category.key.id" class="subcategoryName"  (click)="getAllProducts(subcategory)">
+                      {{subcategory.subCategory}}
+                  </span>
+                </li>
+              </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="align-self-start justify-content-end">
+    <div class="categories">
+      <table class="table table-hover table-bordered table-striped" *ngIf="showCategories">
+          <thead class="category-title">Categories <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </thead>
+        <div class="category" *ngFor="let category of categoryDict | keyvalue">
+            <tr class="category">
+              <td (click)="categoryClicked(category.key)">
+                <i class="{{category.key.categoryIcon}}"></i>
+                <i class="fa fa-carrot"></i>
+                {{category.key.categoryName}}
+              
+              <table  *ngIf="showSubcategories" class="navbar-nav">
+                  <tr *ngFor="let subcategory of currentSubcategory" class="subcategory">
+                    <td *ngIf="subcategory.categoryid == category.key.id" class="subcategoryName"  (click)="getAllProducts(subcategory)">
+                        {{subcategory.subCategory}}
+                    </td>
+                  </tr>
+              </table>
+            </td>
+            </tr>
+        </div>
+      </table>
+    </div>
+  </div> -->

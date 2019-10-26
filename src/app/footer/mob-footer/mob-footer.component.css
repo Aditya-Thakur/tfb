@@ -1,0 +1,55 @@
+@media (min-width:576px) {
+  .hide {
+    display: none;
+  }
+}
+.mobile-app-icon-bar {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-justify-content: space-around;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
+    background: #4aad77;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .mobile-app-icon-bar button {
+    /* padding: 1rem; */
+    cursor: pointer;
+  }
+
+  
+  .mobile-app-icon-bar button svg,
+  .mobile-app-icon-bar button i,
+  .mobile-app-icon-bar button img {
+    font-size: 1.5rem;
+    max-height: 1.5rem;
+    max-width: 1.5rem;
+  }
+
+  .btn-myapp {
+    color: #fff;
+    background-color: #4aad77;
+    border-color: #4aad77;
+  }
+  
+  .badge {
+    margin-bottom: 12px;
+    background-color: #6394F8;
+    border-radius: 10px;
+    color: white;
+    display: inline-block;
+    font-size: 12px;
+    /* line-height: 1; */
+    padding: 3px 7px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+  }

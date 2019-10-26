@@ -1,0 +1,41 @@
+ .head-bar img {
+    width: 100%;
+    height: auto;
+}
+
+@media (min-width:576px) {
+	.head-bar img{
+		width: 100%;
+		height: auto;
+  }
+  }
+  @media (max-width: 576px) {
+    .welcome_banner{
+      padding-top: 15px;
+      width: 100%;
+      height: auto;
+     }
+  }
+
+.menu-image {
+    cursor: pointer;
+    width: auto;
+    height: auto;
+    margin-top: 30px;
+    margin-right: 20px;
+}
+
+.menu-image:hover {
+  box-shadow: 2px 2px 2px 2px rgb(28, 94, 12);
+}
+
+.welcome_banner{
+ width: 100%;
+ height: auto;
+}
+
+.carousel-inner .carousel-item {
+	transition: -webkit-transform 2s ease;
+	transition: transform 2s ease;
+	transition: transform 2s ease, -webkit-transform 2s ease;
+  }

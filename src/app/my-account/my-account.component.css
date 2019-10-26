@@ -1,0 +1,60 @@
+
+.productImage { 
+    cursor: pointer; 
+    object-fit: contain; 
+    padding:20px; 
+    max-width:100%; 
+    height:400px; 
+  } 
+
+.orders {
+  padding:20px;
+}
+
+.orders p {
+  margin-bottom: 20px;
+  color: goldenrod;
+  font-size: 20px;
+}
+
+.productName{
+  color: cadetblue;
+}
+
+.productName:hover{
+  cursor: pointer;
+  color: rgb(54, 94, 95);
+  text-shadow: 2px;
+}
+
+.cart-image {
+  height: 40px;
+  width: auto;
+}
+
+.mybox {
+  width: 100%;
+  border: 2px solid firebrick;
+}
+
+.mybox-text {
+  margin-left: 40px !important;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.mybox-text p {
+  color: rgb(121, 96, 33);
+}
+
+.mybox-text p b {
+  font-weight: bold;
+  color: darkgoldenrod;
+}
+
+.mybox-text h5 {
+  text-decoration: underline;
+  color: rgb(0, 61, 20);
+}

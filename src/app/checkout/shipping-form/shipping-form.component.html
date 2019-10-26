@@ -1,0 +1,194 @@
+<br>
+<br>
+<div *ngIf="!globalVariable.loggedIn" class="container-fluid justify-content-center text-center">
+  <img src="../../assets/images/please-login.png" [routerLink]='["/login"]' routerLinkActive="active"
+    class="productImage">
+  <p>
+    Please signup or login to buy products!
+  </p>
+  <button class="btn btn-primary" [routerLink]='["/login"]' routerLinkActive="active">Login/Signup</button>
+</div>
+<div *ngIf="globalVariable.loggedIn" class="container previousAddress">
+  <h3>Step 2 of 3</h3>
+  <div class="box justify-content-center">
+    <div class="box-text">
+      <h5>Ship to this address:</h5>
+      <p><b>Name: </b>{{globalVariable.loggedInUser.name}}</p>
+      <p><b>Phone:</b> {{globalVariable.loggedInUser.contactno}}</p>
+      <p><b>Address:</b> {{globalVariable.loggedInUser.shippingAddress}}</p>
+      <p><b>Landmark:</b> {{globalVariable.loggedInUser.landMark}}</p>
+      <p><b>City: </b>{{globalVariable.loggedInUser.shippingCity}}</p>
+      <p><b>State:</b> {{globalVariable.loggedInUser.shippingState}}</p>
+      <p><b>Pincode:</b> {{globalVariable.loggedInUser.shippingPincode}}</p>
+      <div class="row text-center">
+          <div class="col-md-5">
+              <button (click)="triggerUpdateAddressTab()" class="btn btn-info btn-lg">Update Address</button>
+          </div>
+          <div class="col-md-2"><h4> OR </h4></div>
+        <div class="col-md-5">
+            <button (click)="continue()" class="btn btn-success btn-lg">Place Order</button>
+          </div>
+    </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="updateShippingAddress" class="container shippingAddressForm">
+  <br><br>
+  <div class="row justify-content-center">
+    <div class="col-md-12 col-xs-12 col-sm-12">
+      <div class="card">
+        <!-- Login form starts -->
+        <form class="form" [formGroup]="shippingForm">
+          <div class="card-header">
+            <div class="card-title form-active text-center">
+              <a>Fill in the Details</a>
+            </div>
+          </div>
+          <div class="card-body form-active">
+            <div class="form-group">
+              <label>Enter your shipping address!</label>
+              <input type="text" class="form-control" formControlName="shippingAddress"
+                [(ngModel)]="globalVariable.loggedInUser.shippingAddress">
+              <div
+                *ngIf="shippingForm.controls.shippingAddress.invalid && (shippingForm.controls.shippingAddress.dirty || shippingForm.controls.shippingAddress.touched)"
+                class="alert alert-danger">
+                <div *ngIf="shippingForm.controls.shippingAddress.errors.required">
+                  shipping address is required.
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Enter Landmark!</label>
+                    <input type="text" class="form-control" formControlName="landMark"
+                      [(ngModel)]="globalVariable.loggedInUser.landMark">
+                    <div
+                      *ngIf="shippingForm.controls.landMark.invalid && (shippingForm.controls.landMark.dirty || shippingForm.controls.landMark.touched)"
+                      class="alert alert-danger">
+                      <div *ngIf="shippingForm.controls.landMark.errors.required">
+                        Landmark is required.
+                      </div>
+                      <div *ngIf="shippingForm.controls.landMark.errors.pattern">
+                        Landmark must be valid.
+                      </div>
+                    </div>
+                  </div>
+              <div class="form-group col-md-6">
+                <label>Enter your city!</label>
+                <input type="text" class="form-control" formControlName="shippingCity"
+                  [(ngModel)]="globalVariable.loggedInUser.shippingCity">
+                <div
+                  *ngIf="shippingForm.controls.shippingCity.invalid && (shippingForm.controls.shippingCity.dirty || shippingForm.controls.shippingCity.touched)"
+                  class="alert alert-danger">
+                  <div *ngIf="shippingForm.controls.shippingCity.errors.required">
+                    City is required.
+                  </div>
+                  <div *ngIf="shippingForm.controls.shippingCity.errors.pattern">
+                    City must be valid.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Enter your state!</label>
+                    <input type="text" class="form-control" formControlName="shippingState"
+                      [(ngModel)]="globalVariable.loggedInUser.shippingState">
+                    <div
+                      *ngIf="shippingForm.controls.shippingState.invalid && (shippingForm.controls.shippingState.dirty || shippingForm.controls.shippingState.touched)"
+                      class="alert alert-danger">
+                      <div *ngIf="shippingForm.controls.shippingState.errors.required">
+                        State is required.
+                      </div>
+                      <div *ngIf="shippingForm.controls.shippingState.errors.pattern">
+                        State must be valid.
+                      </div>
+                    </div>
+                  </div>
+              <div class="form-group col-md-4">
+                <label>Enter your pin code!</label>
+                <input type="text" class="form-control" formControlName="shippingPincode"
+                  [(ngModel)]="globalVariable.loggedInUser.shippingPincode">
+                <div
+                  *ngIf="shippingForm.controls.shippingPincode.invalid && (shippingForm.controls.shippingPincode.dirty || shippingForm.controls.shippingPincode.touched)"
+                  class="alert alert-danger">
+                  <div *ngIf="shippingForm.controls.shippingPincode.errors.required">
+                    Pin code is required.
+                  </div>
+                  <div *ngIf="shippingForm.controls.shippingPincode.errors.pattern">
+                    We currently deliver only in & around Haldia, West Bengal.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer col text-center">
+            <button type="submit" [disabled]="shippingForm.invalid" class="btn btn-success"
+              (click)="update()">Update</button><br>
+            <div *ngIf="showErrorMessage" class="alert alert-danger">Sorry dear! Try again!</div>
+            <div class="row">
+              <div class="col-md-12 userMessage">{{user.message}}</div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 userMessage">{{error}}</div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<div *ngIf="showOrderSummary" class="container orderSummary">
+  <h3>Step 3 of 3</h3>
+  <form class="form" [formGroup]="placeOrderForm">
+    <div class="card-header">
+      <div class="card-title form-active">
+        <a>Order Summary:</a>
+      </div>
+    </div>
+    <div class="card-body form-active">
+      <b>You are ordering:</b>
+      <li *ngFor="let cartItem of myCart.myCartItems">
+        <ol>{{cartItem.productName}} - {{cartItem.quantity}}</ol>
+      </li>
+      <p class="cart-value">
+        Total Cart Value : Rs. {{myCart.getTotalCartPrice()}}
+      </p>
+      <p *ngIf="myCart.getTotalCartPrice() <= 200">
+        <a *ngIf="myCart.getTotalCartPrice() <= 200">Total Amount is less than 200
+           so a delivery charge of Rs 25 will be applied to total Bill</a><br><br>
+        <span class="cart-value">Total amount to pay : Rs. {{myCart.getTotalCartPrice() + 25}}</span>
+      </p>
+      <p *ngIf="myCart.getTotalDiscountPrice() > 0" class="total-discount">You save : Rs. {{myCart.getTotalDiscountPrice()}} on this order</p>
+      <div class="row">
+        <div class="col-md-4 text-center">
+            <span class="pay">Pay using: </span>
+        </div>
+        <div class="col-md-8">
+            <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" formControlName="paymentMethod" value="COD">Cash on delivery
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" formControlName="paymentMethod" disabled>Pay using card
+                </label>
+              </div>
+              <div class="form-check disabled">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" formControlName="paymentMethod" disabled>Pay using UPI
+                </label>
+              </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer col text-center">
+      <button type="submit" [disabled]="placeOrderForm.invalid" class="btn btn-success btn-lg" (click)="placeOrder()">Place
+        Order</button><br>
+      <div *ngIf="showErrorMessage" class="alert alert-danger">Something bad happened! Try again!</div>
+    </div>
+  </form>
+</div>

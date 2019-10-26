@@ -1,0 +1,76 @@
+.userMessage{
+  font-weight: bold;
+  -webkit-animation: color-change 2s infinite;
+  -moz-animation: color-change 2s infinite;
+  -o-animation: color-change 2s infinite;
+  -ms-animation: color-change 2s infinite;
+  animation: color-change 2s infinite;
+}
+.btn-google {
+  color: white;
+  background-color: #ea4335;
+}
+.socialButtons {
+  cursor: not-allowed;
+}
+.btn-facebook {
+  color: white;
+  background-color: #3b5998;
+}
+
+@-webkit-keyframes color-change {
+  0% { color: rgb(238, 255, 0); }
+  50% { color: rgb(71, 71, 231); }
+  0% { color: rgb(231, 49, 49); }
+}
+@-moz-keyframes color-change {
+  0% { color: rgb(238, 255, 0); }
+  50% { color: rgb(71, 71, 231); }
+  0% { color: rgb(231, 49, 49); }
+}
+@-ms-keyframes color-change {
+  0% { color: rgb(238, 255, 0); }
+  50% { color: rgb(71, 71, 231); }
+  0% { color: rgb(231, 49, 49); }
+}
+@-o-keyframes color-change {
+  0% { color: rgb(238, 255, 0); }
+  50% { color: rgb(71, 71, 231); }
+  0% { color: rgb(231, 49, 49); }
+}
+@keyframes color-change {
+  0% { color: rgb(238, 255, 0); }
+  50% { color: rgb(71, 71, 231); }
+  0% { color: rgb(231, 49, 49); }
+}
+
+.form-active {
+  border-bottom: 3px solid rgb(179, 255, 0);
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+
+.i-am-centered {
+  margin: auto;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #11e711a1;
+  color: #666666;
+}
+
+.card-title {
+  cursor: pointer;
+}
+

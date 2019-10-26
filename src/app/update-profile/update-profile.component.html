@@ -1,0 +1,251 @@
+<div *ngIf="globalVariable.loggedIn">
+  <div class="container">
+    <div class="row myBar">
+      <div (click)="triggerShippingAddress()" class="col-md-4 text-center bar1">
+        <span>Update Shipping Address</span>
+      </div>
+      <div (click)="triggerProfileForm()" class="col-md-4 text-center bar2">
+        <span >Update Mobile Number</span>
+      </div>
+      <div (click)="triggerPasswordForm()" class="col-md-4 text-center bar3">
+        <span>Update Password</span>
+      </div>
+    </div>
+  </div>
+  <div class="container bar-1" *ngIf="showShippingForm">
+    <br><br>
+    <div class="row">
+      <div class="col-md-12 userMessage">{{user.message}}</div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-12 col-xs-12 col-sm-12">
+        <div class="card">
+          <!-- Login form starts -->
+          <form class="form" [formGroup]="shippingForm">
+            <div class="card-header">
+              <div class="card-title form-active text-center">
+                <a>Make changes to update shipping address</a>
+              </div>
+            </div>
+            <div class="card-body form-active">
+              <div class="form-group">
+                <label>Enter your shipping address!</label>
+                <input type="text" class="form-control" formControlName="shippingAddress"
+                  [(ngModel)]="globalVariable.loggedInUser.shippingAddress">
+                <div
+                  *ngIf="shippingForm.controls.shippingAddress.invalid && (shippingForm.controls.shippingAddress.dirty || shippingForm.controls.shippingAddress.touched)"
+                  class="alert alert-danger">
+                  <div *ngIf="shippingForm.controls.shippingAddress.errors.required">
+                    shipping address is required.
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="form-group col-md-6">
+                      <label>Enter Landmark!</label>
+                      <input type="text" class="form-control" formControlName="landMark"
+                        [(ngModel)]="globalVariable.loggedInUser.landMark">
+                      <div
+                        *ngIf="shippingForm.controls.landMark.invalid && (shippingForm.controls.landMark.dirty || shippingForm.controls.landMark.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="shippingForm.controls.landMark.errors.required">
+                          Landmark is required.
+                        </div>
+                        <div *ngIf="shippingForm.controls.landMark.errors.pattern">
+                          Landmark must be valid.
+                        </div>
+                      </div>
+                    </div>
+                <div class="form-group col-md-6">
+                  <label>Enter your city!</label>
+                  <input type="text" class="form-control" formControlName="shippingCity"
+                    [(ngModel)]="globalVariable.loggedInUser.shippingCity">
+                  <div
+                    *ngIf="shippingForm.controls.shippingCity.invalid && (shippingForm.controls.shippingCity.dirty || shippingForm.controls.shippingCity.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="shippingForm.controls.shippingCity.errors.required">
+                      City is required.
+                    </div>
+                    <div *ngIf="shippingForm.controls.shippingCity.errors.pattern">
+                      City must be valid.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="form-group col-md-6">
+                      <label>Enter your state!</label>
+                      <input type="text" class="form-control" formControlName="shippingState"
+                        [(ngModel)]="globalVariable.loggedInUser.shippingState">
+                      <div
+                        *ngIf="shippingForm.controls.shippingState.invalid && (shippingForm.controls.shippingState.dirty || shippingForm.controls.shippingState.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="shippingForm.controls.shippingState.errors.required">
+                          State is required.
+                        </div>
+                        <div *ngIf="shippingForm.controls.shippingState.errors.pattern">
+                          State must be valid.
+                        </div>
+                      </div>
+                    </div>
+                <div class="form-group col-md-4">
+                  <label>Enter your pin code!</label>
+                  <input type="text" class="form-control" formControlName="shippingPincode"
+                    [(ngModel)]="globalVariable.loggedInUser.shippingPincode">
+                  <div
+                    *ngIf="shippingForm.controls.shippingPincode.invalid && (shippingForm.controls.shippingPincode.dirty || shippingForm.controls.shippingPincode.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="shippingForm.controls.shippingPincode.errors.required">
+                      Pin code is required.
+                    </div>
+                    <div *ngIf="shippingForm.controls.shippingPincode.errors.pattern">
+                      Pin code must be valid.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer col text-center">
+              <button type="submit" [disabled]="shippingForm.invalid" class="btn btn-success"
+                (click)="update()">Update</button><br>
+              <div *ngIf="showErrorMessage" class="alert alert-danger">Sorry dear! Try again!</div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container bar-2" *ngIf="showProfileForm">
+    <br><br>
+    <div class="row">
+      <div class="col-md-12 userMessage">{{user.message}}</div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-12 col-xs-12 col-sm-12">
+        <div class="card">
+          <!-- Login form starts -->
+          <form class="form" [formGroup]="updateProfileForm">
+            <div class="card-header">
+              <div class="card-title form-active text-center">
+                <a>Make changes to update your profile</a>
+              </div>
+            </div>
+            <div class="card-body form-active">
+              <div class="form-group">
+                <label for="name">Name modification is not allowed</label>
+                <input id="name" type="text" class="form-control" formControlName="name"
+                  [(ngModel)]="globalVariable.loggedInUser.name" disabled>
+              </div>
+              <div class="form-group">
+                <label>Email modification is not allowed!</label>
+                <input type="email" class="form-control" formControlName="email"
+                  [(ngModel)]="globalVariable.loggedInUser.email" disabled>
+              </div>
+              <div class="form-group">
+                <label>Enter your 10 digit phone number!</label><br>
+                <input type="number" class="form-control" formControlName="contactNo"
+                  [(ngModel)]="globalVariable.loggedInUser.contactno">
+                <div
+                  *ngIf="updateProfileForm.controls.contactNo.invalid && (updateProfileForm.controls.contactNo.dirty || updateProfileForm.controls.contactNo.touched)"
+                  class="alert alert-danger">
+                  <div *ngIf="updateProfileForm.controls.contactNo.errors.required">
+                    Contact number is required.
+                  </div>
+                  <div *ngIf="updateProfileForm.controls.contactNo.errors.pattern">
+                    Contact No must be of 10 digit and valid.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Enter your current password to make changes in profile!</label>
+                <input type="password" class="form-control" formControlName="password">
+                <div
+                  *ngIf="updateProfileForm.controls.password.invalid && (updateProfileForm.controls.password.dirty || updateProfileForm.controls.password.touched)"
+                  class="alert alert-danger">
+                  <div *ngIf="updateProfileForm.controls.password.errors.required">
+                    Password is required.
+                  </div>
+                  <div *ngIf="updateProfileForm.controls.password.errors.pattern">
+                    Password should be atleast 6 characters long and of valid characters.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer col text-center">
+              <button type="submit" [disabled]="updateProfileForm.invalid" class="btn btn-success"
+                (click)="updateProfile()">Update</button><br>
+              <div *ngIf="showErrorMessage" class="alert alert-danger">Sorry dear! Try again!</div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container bar-3" *ngIf="showPasswordForm">
+    <br><br>
+    <div class="row">
+      <div class="col-md-12 userMessage">{{user.message}}</div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-12 col-xs-12 col-sm-12">
+        <div class="card">
+          <!-- Login form starts -->
+          <form class="form" [formGroup]="updatePasswordForm">
+            <div class="card-header">
+              <div class="card-title form-active text-center">
+                <a>Update Password</a>
+              </div>
+            </div>
+            <div class="card-body form-active">
+              <div class="form-group">
+                <label>Enter your current password</label>
+                <input type="password" class="form-control" formControlName="currentPassword">
+                <div
+                  *ngIf="updatePasswordForm.controls.currentPassword.invalid && (updatePasswordForm.controls.currentPassword.dirty || updatePasswordForm.controls.currentPassword.touched)"
+                  class="alert alert-danger">
+                  <div *ngIf="updatePasswordForm.controls.currentPassword.errors.required">
+                    Password is required.
+                  </div>
+                  <div *ngIf="updatePasswordForm.controls.currentPassword.errors.pattern">
+                    Password should be atleast 6 characters long and of valid characters.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Enter new password</label>
+                <input type="password" class="form-control" formControlName="password">
+                <div
+                  *ngIf="updatePasswordForm.controls.password.invalid && (updatePasswordForm.controls.password.dirty || updatePasswordForm.controls.password.touched)"
+                  class="alert alert-danger">
+                  <div *ngIf="updatePasswordForm.controls.password.errors.required">
+                    Password is required.
+                  </div>
+                  <div *ngIf="updatePasswordForm.controls.password.errors.pattern">
+                    Password should be atleast 6 characters long and of valid characters.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer col text-center">
+              <button type="submit" [disabled]="updatePasswordForm.invalid" class="btn btn-success"
+                (click)="updatePassword()">Update Password</button><br>
+              <div *ngIf="showErrorMessage" class="alert alert-danger">Sorry dear! Try again!</div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!globalVariable.loggedIn" class="container-fluid justify-content-center text-center">
+  <img src="../../assets/images/please-login.png" [routerLink]='["/login"]' routerLinkActive="active"
+    class="productImage">
+  <p>
+    Please login before viewing this page!
+  </p>
+  <button class="btn btn-primary" [routerLink]='["/login"]' routerLinkActive="active">Login/Signup</button>
+
+</div>
+

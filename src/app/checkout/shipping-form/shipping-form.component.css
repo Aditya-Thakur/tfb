@@ -1,0 +1,167 @@
+.productImage {
+  cursor: pointer;
+  object-fit: contain;
+  padding: 20px;
+  max-width: 100%;
+  height: 400px;
+}
+
+.userMessage {
+  font-weight: bold;
+  -webkit-animation: color-change 2s infinite;
+  -moz-animation: color-change 2s infinite;
+  -o-animation: color-change 2s infinite;
+  -ms-animation: color-change 2s infinite;
+  animation: color-change 2s infinite;
+}
+
+@-webkit-keyframes color-change {
+  0% {
+    color: rgb(238, 255, 0);
+  }
+
+  50% {
+    color: rgb(71, 71, 231);
+  }
+
+  0% {
+    color: rgb(231, 49, 49);
+  }
+}
+
+@-moz-keyframes color-change {
+  0% {
+    color: rgb(238, 255, 0);
+  }
+
+  50% {
+    color: rgb(71, 71, 231);
+  }
+
+  0% {
+    color: rgb(231, 49, 49);
+  }
+}
+
+@-ms-keyframes color-change {
+  0% {
+    color: rgb(238, 255, 0);
+  }
+
+  50% {
+    color: rgb(71, 71, 231);
+  }
+
+  0% {
+    color: rgb(231, 49, 49);
+  }
+}
+
+@-o-keyframes color-change {
+  0% {
+    color: rgb(238, 255, 0);
+  }
+
+  50% {
+    color: rgb(71, 71, 231);
+  }
+
+  0% {
+    color: rgb(231, 49, 49);
+  }
+}
+
+@keyframes color-change {
+  0% {
+    color: rgb(238, 255, 0);
+  }
+
+  50% {
+    color: rgb(71, 71, 231);
+  }
+
+  0% {
+    color: rgb(231, 49, 49);
+  }
+}
+
+.form-active {
+  border-bottom: 3px solid rgb(17, 0, 255);
+}
+
+.i-am-centered {
+  margin: auto;
+}
+
+button:disabled,
+button[disabled] {
+  border: 1px solid #999999;
+  background-color: #11e711a1;
+  color: #666666;
+}
+
+.cart-value {
+  color: rgb(53, 155, 121);
+  font-size: 22px;
+  text-decoration: underline;
+}
+
+.total-discount {
+  color: rgb(84, 218, 102);
+}
+
+.box {
+  border: 2px solid firebrick;
+}
+
+.box-text {
+  margin-left: 40px !important;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.box-text p {
+  color: rgb(121, 96, 33);
+}
+
+.box-text p b {
+  font-weight: bold;
+  color: darkgoldenrod;
+}
+
+.box-text h5 {
+  text-decoration: underline;
+  color: rgb(0, 61, 20);
+}
+
+.card-title, .pay {
+  font-size: 22px;
+}
+
+.card-body b {
+  color: goldenrod;
+  font-size: 20px;
+}
+
+.card-body p a {
+  color: rgb(207, 95, 123);
+  font-size: 14px;
+}
+
+.card-body ol {
+  color: rgb(7, 145, 30);
+  font-size: 18px;
+}
+
+.card-body {
+  margin-left: 40px !important;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.form-check-label{
+  font-size: 20px;
+}

@@ -1,0 +1,182 @@
+ <br>
+ <div class="container">
+   <div class="row">
+     <div class="col-md-12 userMessage">{{user.message}}</div>
+   </div>
+   <div class="row justify-content-center">
+     <div class="col-md-6 col-xs-12 col-sm-12">
+       <div class="card">
+         <!-- Login form starts -->
+         <form *ngIf="showLoginForm" class="form" [formGroup]="loginForm">
+           <div class="card-header">
+             <div class="container">
+               <div class="row">
+                 <div [ngClass]="{'card-title': true, 'form-active':showLoginForm, 'col-md-6':true, 'text-center':true}"
+                   (click)="signUpClicked()">
+                   <a>Login</a>
+                 </div>
+                 <div
+                   [ngClass]="{'card-title': true, 'form-active':showSignupForm, 'col-md-6':true, 'text-center':true}"
+                   (click)="signUpClicked()">
+                   <a>Sign Up</a>
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div class="card-body form-active">
+             <div class="form-group">
+               <label>Enter your email!</label>
+               <input type="email" class="form-control" formControlName="email">
+               <div
+                 *ngIf="loginForm.controls.email.invalid && (loginForm.controls.email.dirty || loginForm.controls.email.touched)"
+                 class="alert alert-danger">
+                 <div *ngIf="loginForm.controls.email.errors.required">
+                   Email is required.
+                 </div>
+                 <div *ngIf="loginForm.controls.email.errors.pattern">
+                   Email must be valid.
+                 </div>
+               </div>
+             </div>
+             <div class="form-group">
+               <label>Enter your password!</label>
+               <input type="{{bla}}" class="form-control" formControlName="password">
+               <i *ngIf="blaActive" class="fa fa-eye" (click)="changebla()"></i>
+               <i *ngIf="!blaActive" class="fa fa-eye-slash" (click)="changebla()"></i>
+               <div
+                 *ngIf="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)"
+                 class="alert alert-danger">
+                 <div *ngIf="loginForm.controls.password.errors.required">
+                   Password is required.
+                 </div>
+                 <div *ngIf="loginForm.controls.password.errors.pattern">
+                   Password should be atleast 6 characters long and of valid characters.
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div class="card-footer col text-center">
+             <button type="submit" [disabled]="loginForm.invalid" class="btn btn-success"
+               (click)="login()">Login</button><br><br>
+               <div class="row">
+                 coming soon:
+               </div>
+               <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-block btn-social btn-facebook socialButtons" (click)="socialSignIn('facebook')"><i class="fa fa-facebook"
+                      aria-hidden="true"></i> Login with facebook
+                  </button>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-block btn-social btn-google socialButtons " (click)="socialSignIn('google')"><i class="fa fa-google" aria-hidden="true"></i> Login with google
+                    </button>
+                  </div>
+            </div>
+             <div class="g-signin2" (click)="socialSignIn('google')" data-onsuccess="onSignIn"></div>
+             <div *ngIf="showErrorMessage" class="alert alert-danger">Sorry dear! Try again!</div>
+           </div>
+         </form>
+         <!-- Login form ends -->
+         <!-- Signup form starts -->
+         <form *ngIf="showSignupForm" class="form" [formGroup]="signupForm">
+           <div class="card-header">
+             <div class="container">
+               <div class="row">
+                 <div [ngClass]="{'card-title': true, 'form-active':showLoginForm, 'col-md-6':true, 'text-center':true}"
+                   (click)="signUpClicked()">
+                   <a>Login</a>
+                 </div>
+                 <div
+                   [ngClass]="{'card-title': true, 'form-active':showSignupForm, 'col-md-6':true, 'text-center':true}"
+                   (click)="signUpClicked()">
+                   <a>Sign Up</a>
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div class="card-body form-active">
+             <div class="form-group">
+               <label for="name">Enter your name!</label>
+               <input id="name" type="text" class="form-control" formControlName="name">
+               <div
+                 *ngIf="signupForm.controls.name.invalid && (signupForm.controls.name.dirty || signupForm.controls.name.touched)"
+                 class="alert alert-danger">
+                 <div *ngIf="signupForm.controls.name.errors.required">
+                   Name is required.
+                 </div>
+                 <div *ngIf="signupForm.controls.name.errors.minlength">
+                   Name must be at least 4 characters long.
+                 </div>
+                 <div *ngIf="signupForm.controls.name.errors.pattern">
+                   Name must be valid.
+                 </div>
+               </div>
+             </div>
+             <div class="form-group">
+               <label>Enter your email!</label>
+               <input type="email" class="form-control" formControlName="email">
+               <div
+                 *ngIf="signupForm.controls.email.invalid && (signupForm.controls.email.dirty || signupForm.controls.email.touched)"
+                 class="alert alert-danger">
+                 <div *ngIf="signupForm.controls.email.errors.required">
+                   Email is required.
+                 </div>
+                 <div *ngIf="signupForm.controls.email.errors.pattern">
+                   Email must be valid.
+                 </div>
+               </div>
+             </div>
+             <div class="form-group">
+               <label>Enter your 10 digit phone number!</label><br>
+               <input type="number" class="form-control" formControlName="contactNo">
+               <div
+                 *ngIf="signupForm.controls.contactNo.invalid && (signupForm.controls.contactNo.dirty || signupForm.controls.contactNo.touched)"
+                 class="alert alert-danger">
+                 <div *ngIf="signupForm.controls.contactNo.errors.required">
+                   Contact number is required.
+                 </div>
+                 <div *ngIf="signupForm.controls.contactNo.errors.pattern">
+                   Contact No must be of 10 digit and valid.
+                 </div>
+               </div>
+             </div>
+             <div class="form-group">
+               <label>Enter your password!</label>
+               <input type="password" class="form-control" formControlName="password">
+               <div
+                 *ngIf="signupForm.controls.password.invalid && (signupForm.controls.password.dirty || signupForm.controls.password.touched)"
+                 class="alert alert-danger">
+                 <div *ngIf="signupForm.controls.password.errors.required">
+                   Password is required.
+                 </div>
+                 <div *ngIf="signupForm.controls.password.errors.pattern">
+                   Password should be atleast 6 characters long and of valid characters.
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div class="card-footer col text-center">
+             <button type="submit" [disabled]="signupForm.invalid" class="btn btn-success" (click)="signup()">Sign
+               Up</button><br><br>
+               <div class="row">
+                 coming soon:
+               </div>
+               <div class="row">
+                  <div class="col-md-6">
+                      <button class="btn btn-block btn-social btn-facebook socialButtons" (click)="socialSignIn('facebook')"><i class="fa fa-facebook"
+                        aria-hidden="true"></i> Sign Up with facebook
+                    </button>
+                  </div>
+                  <div class="col-md-6">
+                      <button class="btn btn-block btn-social btn-google socialButtons" (click)="socialSignIn('google')"><i class="fa fa-google" aria-hidden="true"></i> Sign Up with google
+                      </button>
+                    </div>
+              </div>
+             <div *ngIf="showErrorMessage" class="alert alert-danger">Sorry dear! Try again!</div>
+           </div>
+         </form>
+         <!-- signup form ends -->
+       </div>
+     </div>
+   </div>
+ </div>

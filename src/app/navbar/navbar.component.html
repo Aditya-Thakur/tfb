@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <form [formGroup]="searchForm" class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="What are you looking for..." aria-label="Search"
+      id="navBarSearchForm" formControlName="search">&nbsp;
+    <button class="mobView btn btn-success my-2 my-sm-0" (click)="search()" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+  </form>
+
+  <button class="hide navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="hide collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fa fa-heart" aria-hidden="true"></i> Wishlist<span
+            class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link cartIcon" id="cartIcon" (mouseenter)="shouldShow = true" (mouseleave)="shouldShow = false"><i
+            class="fa fa-shopping-cart"></i> Cart <span class="badge">{{myCart.getTotalItemCount()}}</span></a>
+      </li>
+      <li *ngIf="globalVariable.loggedIn" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Welcome {{globalVariable.loggedInUser.name}} 👤
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item mylink" [routerLink]='["/myAccount"]' routerLinkActive="active">View My Account 🔎</a>
+          <a class="dropdown-item mylink" [routerLink]='["/updateProfile"]' routerLinkActive="active">Update profile
+            ✍️</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item mylink" (click)="logout()">Logout</a>
+        </div>
+      </li>
+      <li *ngIf="!globalVariable.loggedIn" class="nav-item">
+        <a class="nav-link" [routerLink]='["/login"]' routerLinkActive="active">Login/Signup</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div (mouseenter)="shouldShow = true" (mouseleave)="shouldShow = false" id="cart" class="cart container">
+  <div *ngIf="shouldShow">
+    <div *ngIf="myCart.getTotalItemCount() > 0; else noItemFound" class="shopping-cart">
+      <div class="shopping-cart-header">
+        <i class="fa fa-shopping-cart cart-icon"></i><span *ngIf="myCart!=null"
+          class="badge">{{myCart.getTotalItemCount()}}</span>
+        <div class="shopping-cart-total">
+          <span class="lighter-text">Total:</span>
+          <span *ngIf="myCart" class="main-color-text">Rs {{myCart.getTotalCartPrice()}}</span>
+        </div>
+      </div>
+      <!--end shopping-cart-header -->
+
+      <ul *ngIf="myCart!=null" class="shopping-cart-items">
+        <li *ngFor="let product of myCart.myCartItems" class="clearfix">
+          <img class="cart-image"
+            src="http://theflyingbasket.com/assets/productimages/{{product.productId}}/{{product.productImage1}}"
+            alt="item1" />
+          <span class="item-name">{{product.productName}}</span>
+          <span class="item-price">Rs. {{product.productPrice}}</span>
+          <span class="item-quantity">Quantity: {{product.quantity}}</span><br>
+          <span *ngIf="product.quantityType != ''" class="item-price">Type: {{product.quantityType}}</span>
+        </li>
+      </ul>
+
+      <a [routerLink]='["/cart-details"]' routerLinkActive="active" class="button">Checkout</a>
+      <button class="btn btn-small btn-dark" (click)="clearCart()">Clear Cart</button>
+    </div>
+    <ng-template #noItemFound>
+      <div class="container card-body justify-content-center">
+        <div class="row text-center">
+          <h5>There is no item in your cart right now :(</h5>
+        </div>
+        <div class="row text-center">
+            <h4>Let's buy something now :)</h4>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  <!--end shopping-cart -->
+</div>
+<!--end container -->

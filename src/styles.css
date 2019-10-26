@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
+@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css?family=Gentium+Book+Basic&display=swap');
+body{
+    /* background-color: rgba(176, 241, 198, 0.281); */
+    background-color: #fff;
+}
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}

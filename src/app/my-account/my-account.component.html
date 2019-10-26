@@ -1,0 +1,104 @@
+<div *ngIf="globalVariable.loggedIn" class="container">
+  <div *ngIf="showOrders" class="row orders">
+    <p>Hi {{globalVariable.loggedInUser.name}}, these are your orders</p>
+    <table class="table table-bordered table-striped table-responsive">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Ordered On</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of myOrders">
+          <td>
+            <img class="cart-image"
+              src="http://theflyingbasket.com/assets/productimages/{{order.productId}}/{{order.productImage1}}"
+              alt="{{order.productName}}" />
+          </td>
+          <td class="productName" (click)=getProductDetails(order.productId)>{{order.productName}}</td>
+          <td>{{order.quantity}}</td>
+          <td>Rs. &nbsp;{{order.productPrice*order.quantity}}</td>
+          <td>{{order.orderDate | orderDate}}</td>
+          <td>
+            <span *ngIf="order.orderStatus == 'Delivered'; else unDelivered">Delivered</span>
+            <ng-template #unDelivered>
+            <button *ngIf="!(order.id==orderStatusId)" (click)="track(order.id)"
+              class="btn btn-outline-success">Track</button>
+            <span *ngIf="order.id==orderStatusId">
+              {{order.orderStatus}}
+              <a *ngIf="order.orderStatus == null">Ordered successfully</a>
+            </span>
+          </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="!showOrders" class="container">
+      <div class="row justify-content-center text-center">
+          <p>
+            No orders to show :(
+          </p>
+      </div>
+      <div class="row justify-content-center text-center">
+          <button class="btn btn-primary" [routerLink]='["/"]' routerLinkActive="active">Order Now</button>
+      </div>
+    <div class="row justify-content-center text-center">
+        <img src="../../assets/images/please-login.png" [routerLink]='["/"]' routerLinkActive="active" class="productImage">
+    </div>
+    <div class="row justify-content-center text-center">
+        <p>
+          Let's buy something now :)
+        </p>
+    </div>
+    <div class="row justify-content-center text-center">
+        <button class="btn btn-primary" [routerLink]='["/"]' routerLinkActive="active">Order Now</button>
+    </div>
+  </div>
+<br>
+  <div class="row">
+    <div class="mybox justify-content-center container">
+      <div class="mybox-text">
+        <div class="row">
+          <h5>My Profile:</h5>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <p><b>Name: </b>{{globalVariable.loggedInUser.name}}</p>
+            <p><b>Phone:</b> {{globalVariable.loggedInUser.contactno}}</p>
+            <p><b>Email:</b> {{globalVariable.loggedInUser.email}}</p>
+            <p><b>Address:</b> {{globalVariable.loggedInUser.shippingAddress}}</p>
+          </div>
+          <div class="col-md-6">
+            <p><b>Landmark:</b> {{globalVariable.loggedInUser.landMark}}</p>
+            <p><b>City: </b>{{globalVariable.loggedInUser.shippingCity}}</p>
+            <p><b>State:</b> {{globalVariable.loggedInUser.shippingState}}</p>
+            <p><b>Pincode:</b> {{globalVariable.loggedInUser.shippingPincode}}</p>
+          </div>
+        </div>
+        <div class="text-center">
+          <button class="btn btn-lg btn-info" (click)="updateProfile()">Update Profile</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <br>
+  <div class="text-center">
+      <button class="btn btn-lg btn-warning" (click)="logout()">Logout</button>
+    </div>
+</div>
+
+<div *ngIf="!globalVariable.loggedIn" class="container justify-content-center text-center">
+  <img src="../../assets/images/please-login.png" [routerLink]='["/login"]' routerLinkActive="active"
+    class="productImage">
+  <p>
+    Please login before viewing this page!
+  </p>
+  <button class="btn btn-primary" [routerLink]='["/login"]' routerLinkActive="active">Login/Signup</button>
+
+</div>

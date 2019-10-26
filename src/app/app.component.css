@@ -1,0 +1,161 @@
+/* For mobile view */
+@media screen and (max-width: 576px) {
+  .iconTop {
+    justify-content: center;
+    text-align: center;
+  }
+
+
+  .icon-img {
+    padding-top: 10px;
+    height: 40px !important;
+    width: auto !important;
+  }
+
+  .top-heading h1 {
+    padding-top: 10px;
+    text-align: center;
+  }
+
+  .top-heading {
+    color: #fff;
+    font-size: 1.2rem;
+    font-family: 'Gentium Book Basic', serif;
+  }
+
+  .top-head {
+    align-self: center;
+    padding-top: 10px;
+  }
+
+  .drawer-toggle, .cart-icon{
+    color:  #fff;
+  }
+
+  .myContainer {
+    z-index: 1000;
+    position: fixed;
+    background-color: #4aad77;
+  }
+
+  .mobile-app-icon-bar {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background: #4aad77;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  
+  .mobile-app-icon-bar {
+    /* padding: 1rem; */
+    cursor: pointer;
+  }
+
+  
+  .mobile-app-icon-bar button svg,
+  .mobile-app-icon-bar button i,
+  .mobile-app-icon-bar button img {
+    font-size: 1.5rem;
+    max-height: 1.5rem;
+    max-width: 1.5rem;
+  }
+  .main-content {
+    width: 100%;
+    padding-top: 120px;
+  }
+
+  .search-bar {
+    z-index: 500;
+    position: fixed;
+    padding-top: 90px;
+    width: 100%;
+    background-color: #4aad77;
+  }
+
+  .mobViewHide {
+    display: none;
+  }
+
+  .mobView {
+    display: inline;
+    padding-right: 10px;
+  }
+
+  .example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .sidenav-content{
+    top: 130px;
+    bottom: 0; 
+  }
+  .badge {
+    background-color: #fff;
+    border-radius: 8px;
+    color: #4aad77;
+    display: inline-block;
+    font-size: 10px;
+    line-height: 1;
+    padding: 3px 7px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  .searchbar{
+     padding: 0 0 0 0;
+     margin: 0 0 0 0;
+  }
+
+}
+
+/* Mobile View Ends */
+@media (min-width:577px) {
+  .deskViewHide {
+    display: none;
+  }
+
+  .top-heading {
+    font-size: 1.5 rem;
+    color: rgb(18, 133, 69);
+    font-family: 'Gentium Book Basic', serif;
+  }
+
+  .top-head {
+    align-self: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .icon-img {
+    height: 70px !important;
+    width: 80px !important;
+  }
+}
+
+
+.float-right {
+  float: right;
+  color: brown;
+}
+
+.footer {
+  background-color: rgb(125, 238, 162);
+  height: 130px;
+}
+
+.app-footer {
+  height: 60px;
+}
+
+.main-content {
+  padding-bottom: 10px;
+}

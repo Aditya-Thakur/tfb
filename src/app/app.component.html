@@ -1,0 +1,66 @@
+    <div class="mobViewHide navbar-expand-sm">
+      <div class="container myContainer">
+        <div class="row top-head mx-auto iconTop">
+          <div class="offset-1 col-2 mx-auto">
+            <a routerLinkActive="active" [routerLink]='["/"]'>
+              <img class="icon-img" src="../favicon.ico">
+            </a>
+          </div>
+          <div class="offset-1 col-7 mx-auto">
+            <a routerLinkActive="active" [routerLink]='["/"]' class="top-heading">
+              <h1>{{ title }}</h1>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- mobile view starts -->
+    <div class="deskViewHide text-center">
+        <div class="container myContainer">
+          <div class="row mobile-app-icon-bar">
+            <div class="col-2">
+                <button class="btn drawer-toggle" mat-button (click)="sidenav.toggle()">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="col-8">
+                <a routerLinkActive="active" [routerLink]='["/"]'>
+                  <img class="icon-img" src="../favicon.ico">
+                </a>
+                <a class="top-heading" routerLinkActive="active" [routerLink]='["/"]'>
+                  {{title}}
+                </a>
+            </div>
+            <div class="col-2">
+                <button class="btn cart-icon">
+                    <span class="badge">{{myCart.getTotalItemCount()}}</span>
+                    <i class="fa fa-shopping-cart" aria-hidden="true" [routerLink]='["/cart-details"]' routerLinkActive="active"></i>
+                </button>
+            </div>
+          </div>
+          <div class="row searchbar">
+              <app-navbar></app-navbar>
+          </div>
+        </div>
+      </div>
+    <!-- mobile view ends -->
+    <div class="mobViewHide search-bar">
+      <app-navbar></app-navbar>
+    </div>
+    <mat-sidenav-container class="example-container" autosize>
+      <mat-sidenav class="sidenav-content" #sidenav mode="over" [(opened)]="opened" (opened)="events.push('open!')"
+        (closed)="events.push('close!')">
+        <app-home></app-home>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <div class="main-content">
+          <router-outlet></router-outlet>
+        </div>
+        <div class="mobViewHide footer">
+          <app-footer-row></app-footer-row>
+        </div>
+        <div class="app-footer">
+          <app-mob-footer></app-mob-footer>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>

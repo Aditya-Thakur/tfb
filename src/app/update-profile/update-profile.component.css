@@ -1,0 +1,67 @@
+.productImage { 
+    cursor: pointer; 
+    object-fit: contain; 
+    padding:20px; 
+    max-width:100%; 
+    height:400px; 
+  } 
+
+.myBar {
+  margin-top: 50px;
+  cursor: pointer;
+}
+
+.bar1{
+  background-color: rgba(230, 171, 60, 0.47);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-weight: bold;
+  font-size: 20px;
+  color: rgb(42, 39, 189);
+  border-right: 4px solid white;
+}
+
+.bar2{
+  background-color: rgba(29, 148, 184, 0.47);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-weight: bold;
+  font-size: 20px;
+  color: rgb(42, 39, 189);
+  border-right: 4px solid white;
+}
+
+.bar3{
+  background-color: rgba(199, 108, 158, 0.47);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-weight: bold;
+  font-size: 20px;
+  color: rgb(42, 39, 189);
+}
+
+.bar1:hover, .bar2:hover, .bar3:hover {
+  text-decoration: underline;
+  color: rgb(3, 1, 116);
+}
+
+.bar-1{
+  background-color: rgba(230, 171, 60, 0.47);
+  padding-bottom: 20px;
+  font-size: 20px;
+}
+
+.bar-2{
+  background-color: rgba(29, 148, 184, 0.47);
+  padding-bottom: 20px;
+  font-size: 20px;
+}
+
+.bar-3{
+  background-color: rgba(199, 108, 158, 0.47);
+  padding-bottom: 20px;
+  font-size: 20px;
+}
+
+
+
