@@ -13,6 +13,7 @@ import { CancelComponent } from './footer/cancel/cancel.component';
 import { DeliveryComponent } from './footer/delivery/delivery.component';
 import { PrivacyPolicyComponent } from './footer/privacy-policy/privacy-policy.component';
 import { MenebarComponent } from './footer/menebar/menebar.component';
+import { SupportComponent } from './shared/component/support/support.component';
 
 const routes: Routes = [
   {path: '', component: MenuComponent},
@@ -27,7 +28,8 @@ const routes: Routes = [
   {path: 'Cancel&Return', component: CancelComponent},
   {path: 'Delivery', component: DeliveryComponent},
   {path: 'Privacy-Policy', component: PrivacyPolicyComponent},
-  {path: 'shopByCategory', component: MenebarComponent}
+  {path: 'shopByCategory', component: MenebarComponent},
+  {path: 'support', component: SupportComponent}
 ];
 
 @NgModule({
