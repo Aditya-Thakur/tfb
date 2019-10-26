@@ -111,6 +111,8 @@ export class ShippingFormComponent implements OnInit, AfterViewChecked {
           Global.loggedInUser = this.user;
           this.saveInLocal('loggedInUser', this.user);
           this.updateShippingAddress = false;
+          this.error = null;
+          this.scrollHelper.scrollToFirst('previousAddress');
         }
       },
       (err) => {
@@ -120,9 +122,23 @@ export class ShippingFormComponent implements OnInit, AfterViewChecked {
   }
 
   continue() {
-    this.showOrderSummary = true;
-    this.updateShippingAddress = false;
-    this.scrollHelper.scrollToFirst('orderSummary');
+    if (this.user.shippingAddress !== null) {
+      if (this.user.shippingCity !== null) {
+        if (this.user.shippingState !== null) {
+          console.log(this.user.shippingAddress);
+          this.showOrderSummary = true;
+          this.updateShippingAddress = false;
+          this.scrollHelper.scrollToFirst('orderSummary');
+        } else {
+          this.error = 'Shipping State must be filled. Please click update address and fill required details.';
+        }
+      } else {
+        this.error = 'Shipping City must be filled. Please click update address and fill required details.';
+      }
+    } else {
+      this.error = 'Shipping address must be filled. Please click update address and fill required details.';
+    }
+
   }
 
   saveInLocal(key, val): void {
@@ -130,31 +146,19 @@ export class ShippingFormComponent implements OnInit, AfterViewChecked {
   }
 
   async placeOrder() {
-    if (this.user.shippingAddress !== '') {
-      if (this.user.shippingCity !== '') {
-        if (this.user.shippingState !== '') {
-          this.order.userId = this.globalVariable.loggedInUser.id;
-          this.order.paymentMethod = this.placeOrderForm.value.paymentMethod;
-          this.order.cart = this.myCart;
-          this.order.contactno = this.globalVariable.loggedInUser.contactno;
-          this.order.landMark = this.globalVariable.loggedInUser.landMark;
-          this.order.shippingAddress = this.globalVariable.loggedInUser.shippingAddress;
-          this.order.shippingCity = this.globalVariable.loggedInUser.shippingCity;
-          this.order.shippingPincode = this.globalVariable.loggedInUser.shippingPincode;
-          this.order.shippingState = this.globalVariable.loggedInUser.shippingState;
-          const orderMsg: string = await this.loginservice.placeOrder(this.order);
-          console.log(orderMsg);
-          await this.cartService.clearCart();
-          this.router.navigate(['myAccount']);
-        } else {
-          this.error = 'Shipping State must be filled';
-        }
 
-      } else {
-        this.error = 'Shipping City must be filled';
-      }
-    } else {
-      this.error = 'Shipping address must be filled';
-    }
+    this.order.userId = this.globalVariable.loggedInUser.id;
+    this.order.paymentMethod = this.placeOrderForm.value.paymentMethod;
+    this.order.cart = this.myCart;
+    this.order.contactno = this.globalVariable.loggedInUser.contactno;
+    this.order.landMark = this.globalVariable.loggedInUser.landMark;
+    this.order.shippingAddress = this.globalVariable.loggedInUser.shippingAddress;
+    this.order.shippingCity = this.globalVariable.loggedInUser.shippingCity;
+    this.order.shippingPincode = this.globalVariable.loggedInUser.shippingPincode;
+    this.order.shippingState = this.globalVariable.loggedInUser.shippingState;
+    const orderMsg: string = await this.loginservice.placeOrder(this.order);
+    console.log(orderMsg);
+    await this.cartService.clearCart();
+    this.router.navigate(['myAccount']);
   }
 }

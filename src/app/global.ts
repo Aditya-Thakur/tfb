@@ -58,6 +58,6 @@ export const Global = {
           getTotalItemCount: () => 0,
           getTotalDiscountPrice: () => 0
     }),
-    //  backendUrl: 'http://theflyingbasket.com/backend'
-    backendUrl: 'http://localhost/backend'
+     backendUrl: 'http://theflyingbasket.com/backend'
+    // backendUrl: 'http://localhost/backend'
 };
