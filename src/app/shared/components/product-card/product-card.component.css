@@ -1,7 +1,11 @@
 .products {
   animation: 0.5s ease-out 0s 1 slideUpFromDown;
 }
-
+.giveBorder{
+  border: 1px solid rgb(1, 88, 20);
+  margin-bottom: 10px;
+  padding: -2.5px;
+}
 @keyframes slideUpFromDown {
   0% {
     transform: translateY(-30%);
@@ -20,7 +24,14 @@
   overflow: hidden;
   white-space: nowrap;
 }
-
+.discount2 {
+  color: white;
+  background-color: rgba(18, 94, 15, 0.781);
+}
+.discount {
+  padding: 2.5px;
+  padding-top: 2.5px;
+}
 .productPriceBeforeDiscount {
   text-decoration: line-through;
   color: rgb(175, 175, 175);

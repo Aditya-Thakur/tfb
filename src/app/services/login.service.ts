@@ -88,7 +88,7 @@ export class LoginService {
       // tslint:disable-next-line: no-string-literal
       return response['orderData'] as string;
     } catch (error) {
-      await this.handleError(error);
+      this.handleError(error);
     }
   }
 

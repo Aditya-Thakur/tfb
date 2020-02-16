@@ -16,7 +16,7 @@
         <tr *ngFor="let order of myOrders">
           <td>
             <img class="cart-image"
-              src="http://theflyingbasket.com/assets/productimages/{{order.productId}}/{{order.productImage1}}"
+              src="https://theflyingbasket.com/assets/productimages/{{order.productId}}/{{order.productImage1}}"
               alt="{{order.productName}}" />
           </td>
           <td class="productName" (click)=getProductDetails(order.productId)>{{order.productName}}</td>

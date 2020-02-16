@@ -10,7 +10,7 @@ import { User } from '../models/user';
 })
 export class FetchAllUsersService {
 
-  baseUrl = 'http://127.0.0.1:8080';
+  baseUrl = 'https://127.0.0.1:8080';
   users: User[];
 
   constructor(private http: HttpClient) { }

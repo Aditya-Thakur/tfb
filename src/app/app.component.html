@@ -24,9 +24,6 @@
                 </button>
             </div>
             <div class="col-8">
-                <a routerLinkActive="active" [routerLink]='["/"]'>
-                  <img class="icon-img" src="../favicon.ico">
-                </a>
                 <a class="top-heading" routerLinkActive="active" [routerLink]='["/"]'>
                   {{title}}
                 </a>
@@ -39,6 +36,9 @@
             </div>
           </div>
           <div class="row searchbar">
+              <a routerLinkActive="active" [routerLink]='["/"]'>
+                <img class="icon-img" src="../favicon.ico">
+              </a>
               <app-navbar></app-navbar>
           </div>
         </div>
